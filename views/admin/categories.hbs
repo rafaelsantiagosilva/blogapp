@@ -1,0 +1,65 @@
+<h2 class="mt-3">Lista de Categorias</h2>
+<hr />
+<a href="/admin/categories/add"><button
+    class="btn btn-success"
+    id="btn-add-category"
+  >Adicionar categoria</button></a>
+{{#each categories}}
+  <section class="card my-4 shadow-sm">
+    <header
+      class="card-header d-flex justify-content-between align-items-center"
+    >
+      <h5 class="card-title">{{name}}</h5>
+      <div class="btn-group d-flex gap-1">
+        <a href="/admin/categories/edit/{{_id}}"><button
+            class="btn btn-secondary rounded-circle"
+          ><i class="bi bi-pencil"></i></button></a>
+        <button
+          class="btn btn-danger rounded-circle"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-{{_id}}"
+        ><i class="bi bi-trash"></i></button>
+      </div>
+    </header>
+    <div class="card-body">
+      <p class="card-text">{{slug}}</p>
+    </div>
+    <small class="card-footer">{{date}}</small>
+  </section>
+
+  <div class="modal" id="modal-{{_id}}" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Você tem certeza que deseja
+            <span class="text-danger text-uppercase">excluir</span>
+            a categoria
+            <span class="fst-italic">{{name}}</span>?</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Ela será permanentemente apagada e não pode ser recuperada.</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >Fechar</button>
+          <a href="/admin/categories/delete/{{_id}}"><button
+              type="button"
+              class="btn btn-danger"
+            >Excluir</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{else}}
+  <h3 class="my-4">Nenhuma categoria registrada</h3>
+{{/each}}

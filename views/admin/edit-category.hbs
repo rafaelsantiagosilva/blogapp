@@ -1,0 +1,36 @@
+{{#each errors}}
+  <div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+<form action="/admin/categories/update/{{id}}" class="card" method="post">
+  <div class="card-body">
+    <label for="name">Nome</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Nome da categoria"
+      class="form-control"
+      value="{{category.name}}"
+      required
+    />
+    <label for="slug">Slug</label>
+    <input
+      type="text"
+      id="slug"
+      name="slug"
+      placeholder="Slug da categoria"
+      class="form-control"
+      value="{{category.slug}}"
+      required
+    />
+    <button
+      type="submit"
+      class="btn btn-success btn-disabled w- mt-2"
+      id="btn-add-category"
+      disabled
+    >Editar</button>
+  </div>
+</form>
+<script src="/js/validateFormNewCategory.js"></script>
