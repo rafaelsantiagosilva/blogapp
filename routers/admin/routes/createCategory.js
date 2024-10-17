@@ -29,7 +29,7 @@ export default function createCategory(req, res) {
     .save()
     .then(() => {
       req.flash("success_msg", "Categoria criada com sucesso!");
-      res.redirect("admin/categories");
+      res.redirect("/admin/categories");
     })
     .catch((err) => {
       req.flash("error_msg", "Erro ao salvar categoria! Tente novamente mais tarde");
