@@ -1,0 +1,61 @@
+{{#each errors}}
+  <div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+<form action="/admin/posts/new" class="card" method="post">
+  <div class="card-body">
+    <label for="title">Título</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Título da postagem"
+      class="form-control"
+      required
+    />
+    <label for="slug">Slug</label>
+    <input
+      type="text"
+      id="slug"
+      name="slug"
+      placeholder="Slug da postagem"
+      class="form-control"
+      required
+    />
+    <label for="description">Descrição</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      placeholder="Descrição da postagem"
+      class="form-control"
+      required
+    />
+    <label for="content">Conteúdo</label>
+    <textarea
+      class="form-control"
+      name="content"
+      id="content"
+      rows="5"
+    ></textarea>
+    <label for="category">Categoria</label>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Selecionar categoria</option>
+      {{#each categories}}
+        <option value="{{_id}}">{{name}}</option>
+      {{else}}
+        <a href="/admin/add-categories">
+          <option>Não há categorias!</option>
+        </a>
+      {{/each}}
+    </select>
+    <button
+      type="submit"
+      class="btn btn-success btn-disabled w- mt-2"
+      id="btn-add-category"
+      disabled
+    >Adicionar</button>
+  </div>
+</form>
+<script src="/js/validateFormNewCategory.js"></script>
