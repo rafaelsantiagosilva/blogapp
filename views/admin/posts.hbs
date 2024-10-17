@@ -1,0 +1,31 @@
+<h2 class="mt-3">Postagens</h2>
+<hr />
+<a href="/admin/categories/add"><button
+    class="btn btn-success"
+    id="btn-add-category"
+  >Nova postagem</button></a>
+{{#each posts}}
+  <section class="card my-4 shadow-sm">
+    <header
+      class="card-header d-flex justify-content-between align-items-center"
+    >
+      <h4 class="card-title">{{title}}</h4>
+      <h5 class="small">#{{slug}}</h5>
+      <div class="btn-group d-flex gap-1">
+        <a href="#"><button class="btn btn-secondary rounded-circle"><i
+              class="bi bi-pencil"
+            ></i></button></a>
+        <button class="btn btn-danger rounded-circle"><i
+            class="bi bi-trash"
+          ></i></button>
+      </div>
+    </header>
+    <div class="card-body">
+      <p class="small card-text">{{description}}</p>
+      <p class="card-text">{{content}}</p>
+    </div>
+    <small class="card-footer">{{date}}</small>
+  </section>
+{{else}}
+  <h3 class="my-4">Nenhuma postagem registrada</h3>
+{{/each}}
