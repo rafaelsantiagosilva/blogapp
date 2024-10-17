@@ -5,7 +5,7 @@ export default function readPosts(req, res) {
   const Post = mongoose.model("posts", PostSchema);
 
   Post.find().lean().sort({ date: 'desc' })
-    .then((post) => {
+    .then((posts) => {
       res.render('admin/posts', { posts });
     })
     .catch((err) => {
