@@ -12,12 +12,14 @@
       <h4 class="card-title">{{title}}</h4>
       <h5 class="small">#{{slug}}</h5>
       <div class="btn-group d-flex gap-1">
-        <a href="#"><button class="btn btn-secondary rounded-circle"><i
-              class="bi bi-pencil"
-            ></i></button></a>
-        <button class="btn btn-danger rounded-circle"><i
-            class="bi bi-trash"
-          ></i></button>
+        <a href="/admin/posts/edit/{{_id}}"><button
+            class="btn btn-secondary rounded-circle"
+          ><i class="bi bi-pencil"></i></button></a>
+        <button
+          class="btn btn-danger rounded-circle"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-{{_id}}"
+        ><i class="bi bi-trash"></i></button>
       </div>
     </header>
     <div class="card-body">
@@ -26,6 +28,39 @@
     </div>
     <small class="card-footer">{{date}}</small>
   </section>
+
+  <div class="modal" id="modal-{{_id}}" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Você tem certeza que deseja
+            <span class="text-danger text-uppercase">excluir</span>
+            a postagem
+            <span class="fst-italic">{{title}}</span>?</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Ela será permanentemente apagada e não pode ser recuperada.</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >Fechar</button>
+          <a href="/admin/posts/delete/{{_id}}"><button
+              type="button"
+              class="btn btn-danger"
+            >Excluir</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
 {{else}}
   <h3 class="my-4">Nenhuma postagem registrada</h3>
 {{/each}}
