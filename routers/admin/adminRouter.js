@@ -9,6 +9,7 @@ import deleteCategory from "./routes/deleteCategory.js";
 
 import readPosts from "./routes/readPosts.js";
 import addPostForm from "./routes/addPostForm.js";
+import createPost from "./routes/createPost.js";
 
 const adminRouter = Router();
 
@@ -25,5 +26,6 @@ adminRouter.get('/categories/delete/:id', deleteCategory);
 
 adminRouter.get('/posts', readPosts);
 adminRouter.get('/posts/add', addPostForm);
+adminRouter.post('/posts/new', createPost);
 
 export default adminRouter;
